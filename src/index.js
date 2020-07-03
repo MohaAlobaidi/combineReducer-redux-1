@@ -4,10 +4,24 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {createStore,combineReducers} from 'redux'
+import {CakeReducer,IceCreamReducer} from './redusers/Rootreducer'
+import {Provider} from 'react-redux'
+
+
+const rootReducer = combineReducers({
+  cake:CakeReducer,
+  ice:IceCreamReducer
+})
+const store = createStore(rootReducer)
+
 ReactDOM.render(
+<Provider store={store}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
